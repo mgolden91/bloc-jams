@@ -12,6 +12,20 @@
          { title: 'Magenta', duration: '2:15'}
      ]
  };
+ var albumGolden = {
+     title: 'The Golden',
+     artist: 'Mateo Goldeno',
+     label: 'Coolism',
+     year: '1982',
+     albumArtUrl: 'assets/images/album_covers/01.png',
+     songs: [
+         { title: 'My', duration: '4:26' },
+         { title: 'name', duration: '3:14' },
+         { title: 'is', duration: '5:01' },
+         { title: 'Kid', duration: '3:21'},
+         { title: 'Rock', duration: '2:15'}
+     ]
+ };
  
  var albumMarconi = {
      title: 'The Telephone',
@@ -27,6 +41,10 @@
          { title: 'Wrong phone number', duration: '2:15'}
      ]
  };
+
+var albumArray = [];
+albumArray.push(albumGolden,albumMarconi,albumPicasso);
+
 
 var createSongRow = function(songNumber, songName, songLength){
     var template =
@@ -57,6 +75,11 @@ var createSongRow = function(songNumber, songName, songLength){
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
+     
+     albumImage.addEventListener('click',function(event){
+         var randomAlbum = albumArray[Math.floor(Math.random()*albumArray.length)] ;
+         setCurrentAlbum(randomAlbum);
+     });
  };
  
  window.onload = function() {
